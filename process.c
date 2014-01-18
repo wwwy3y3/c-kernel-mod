@@ -1,8 +1,10 @@
-#include <linux/kernel.h >
-#include <linux/sched.h >
-#include <linux/module.h >
+#include <linux/kernel.h>
+#include <linux/sched.h>
+#include <linux/module.h>
 
-int init_module(void)
+MODULE_LICENSE("GPL");  
+
+int init_func(void)
 {
 	struct task_struct *task;
 	for_each_process(task)
@@ -13,11 +15,11 @@ int init_module(void)
 	return 0;
 }
 
-void cleanup_module(void)
+void cleanup_func(void)
 {
-	printk(KERN_INFO "Cleaning Up.\n");
+	printk(KERN_INFO "goodbye!.\n");
 }
 
-MODULE_LICENSE("GPL");    
-module_init(init_module);
-module_exit(cleanup_module);
+  
+module_init(init_func);
+module_exit(cleanup_func);

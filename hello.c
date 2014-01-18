@@ -13,8 +13,9 @@
 #include <linux/module.h>  /* Needed by all modules */
 #include <linux/kernel.h>  /* Needed for KERN_ALERT */
 
+MODULE_LICENSE("GPL");
 
-int init_module(void)
+static int init_module(void)
 {
    printk("<1>Hello world 1.\n");
 	
@@ -23,9 +24,8 @@ int init_module(void)
 }
 
 
-void cleanup_module(void)
+static void cleanup_module(void)
 {
   printk(KERN_ALERT "Goodbye world 1.\n");
 }  
 
-MODULE_LICENSE("GPL");
